@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
+use App\Models\Menu;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    $favoriteMenus = Menu::where('is_favorite', true)->latest()->take(3)->get();
+    $newMenus = Menu::where('is_new', true)->latest()->take(3)->get();
+
+    return view('home', compact('favoriteMenus', 'newMenus'));
 })->name('home');
 
 Route::get('/tentang', function () {

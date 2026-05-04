@@ -22,15 +22,22 @@
                 @foreach($menusWithImages as $menu)
                     <div class="col-md-6 col-lg-4">
                         <article class="card h-100 shadow-sm border-0">
-                            <img src="{{ asset('storage/' . $menu->gambar) }}" class="card-img-top menu-image" alt="{{ $menu->nama }}">
+                            <img src="{{ $menu->image_url }}" class="card-img-top menu-image" alt="{{ $menu->nama }}">
                             <div class="card-body">
+                                <div class="d-flex flex-wrap gap-1 mb-2">
+                                    @if($menu->is_favorite)
+                                        <span class="badge text-bg-warning">Favorit</span>
+                                    @endif
+                                    @if($menu->is_new)
+                                        <span class="badge text-bg-success">Terbaru</span>
+                                    @endif
+                                </div>
                                 <div class="d-flex justify-content-between gap-3">
                                     <h2 class="h5 fw-bold">{{ $menu->nama }}</h2>
-                                    <span class="fw-bold text-danger">
-                                        {{ $menu->harga > 0 ? 'Rp ' . number_format($menu->harga, 0, ',', '.') : 'Cek harga' }}
-                                    </span>
+                                    <span class="fw-bold text-danger">{{ $menu->price_label }}</span>
                                 </div>
                                 <p class="text-secondary mb-0">{{ $menu->deskripsi ?: 'Menu penyetan favorit dari Penyetan Mattenan.' }}</p>
+                                <a class="btn btn-sm btn-mattenan mt-3" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan Menu Ini</a>
                             </div>
                         </article>
                     </div>
@@ -50,8 +57,9 @@
                                         <p class="text-secondary mb-0">{{ $menu->deskripsi }}</p>
                                     @endif
                                 </div>
-                                <div class="fw-bold text-danger text-md-end text-nowrap">
-                                    {{ $menu->harga > 0 ? 'Rp ' . number_format($menu->harga, 0, ',', '.') : 'Cek harga' }}
+                                <div class="text-md-end text-nowrap">
+                                    <div class="fw-bold text-danger">{{ $menu->price_label }}</div>
+                                    <a class="btn btn-sm btn-outline-dark mt-2" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
                                 </div>
                             </div>
                         </div>

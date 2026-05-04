@@ -30,6 +30,8 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $data = $this->validatedData($request);
+        $data['is_favorite'] = $request->boolean('is_favorite');
+        $data['is_new'] = $request->boolean('is_new');
 
         if ($request->hasFile('gambar')) {
             $data['gambar'] = $request->file('gambar')->store('menu', 'public');
@@ -53,6 +55,8 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         $data = $this->validatedData($request);
+        $data['is_favorite'] = $request->boolean('is_favorite');
+        $data['is_new'] = $request->boolean('is_new');
 
         if ($request->hasFile('gambar')) {
             if ($menu->gambar) {
@@ -85,6 +89,8 @@ class MenuController extends Controller
             'harga' => ['required', 'integer', 'min:0'],
             'deskripsi' => ['nullable', 'string', 'max:1000'],
             'gambar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+            'is_favorite' => ['nullable', 'boolean'],
+            'is_new' => ['nullable', 'boolean'],
         ]);
     }
 }

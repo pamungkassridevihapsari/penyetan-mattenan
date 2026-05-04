@@ -16,39 +16,93 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Admin Penyetan Mattenan',
-            'email' => 'admin@penyetanmattenan.test',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@penyetanmattenan.test'],
+            ['name' => 'Admin Penyetan Mattenan']
+        );
+
+        Menu::query()->delete();
 
         $menus = [
             [
-                'nama' => 'Paket Mat 1',
-                'harga' => 0,
-                'deskripsi' => 'Paket nasi dan lauk sederhana dari referensi menu Penyetan Mattenan. Detail harga dapat dikonfirmasi di tempat.',
+                'nama' => 'Nasi Ayam Goreng Mattenan',
+                'harga' => 15000,
+                'deskripsi' => 'Nasi hangat dengan ayam goreng, sambal, dan lalapan sederhana.',
+                'gambar' => 'menu/nasi-ayam-goreng.svg',
+                'is_favorite' => true,
+                'is_new' => false,
             ],
             [
-                'nama' => 'Paket Mat 2',
-                'harga' => 0,
-                'deskripsi' => 'Paket nasi dan lauk sederhana dari referensi menu Penyetan Mattenan. Detail harga dapat dikonfirmasi di tempat.',
+                'nama' => 'Nasi Telur Goreng',
+                'harga' => 10000,
+                'deskripsi' => 'Menu simpel berisi nasi hangat, telur goreng, sambal, dan lalapan.',
+                'gambar' => 'menu/nasi-telur-goreng.svg',
+                'is_favorite' => false,
+                'is_new' => true,
             ],
             [
-                'nama' => 'Paket Mat 3',
-                'harga' => 0,
-                'deskripsi' => 'Paket nasi dan lauk sederhana dari referensi menu Penyetan Mattenan. Detail harga dapat dikonfirmasi di tempat.',
+                'nama' => 'Nasi Tahu Tempe Goreng',
+                'harga' => 10000,
+                'deskripsi' => 'Nasi dengan tahu goreng, tempe goreng, sambal, dan lalapan.',
+                'gambar' => 'menu/tahu-tempe-goreng.svg',
+                'is_favorite' => true,
+                'is_new' => false,
             ],
             [
-                'nama' => 'Menu Penyetan Mattenan',
-                'harga' => 0,
-                'deskripsi' => 'Aneka nasi ayam goreng, nasi telur goreng, tahu goreng, tempe goreng, sambal, dan minuman sesuai papan menu.',
+                'nama' => 'Paket Hemat Ayam dan Es Teh',
+                'harga' => 18000,
+                'deskripsi' => 'Nasi ayam goreng dengan sambal dan es teh untuk paket makan praktis.',
+                'gambar' => 'menu/paket-hemat.svg',
+                'is_favorite' => true,
+                'is_new' => true,
+            ],
+            [
+                'nama' => 'Ayam Goreng Sambal',
+                'harga' => 12000,
+                'deskripsi' => 'Ayam goreng dengan sambal sebagai lauk tambahan.',
+                'is_favorite' => false,
+                'is_new' => false,
+            ],
+            [
+                'nama' => 'Telur Goreng Sambal',
+                'harga' => 7000,
+                'deskripsi' => 'Telur goreng dengan sambal untuk lauk ringan.',
+                'is_favorite' => false,
+                'is_new' => false,
+            ],
+            [
+                'nama' => 'Tahu Goreng',
+                'harga' => 5000,
+                'deskripsi' => 'Tahu goreng hangat sebagai lauk tambahan.',
+                'is_favorite' => false,
+                'is_new' => false,
+            ],
+            [
+                'nama' => 'Tempe Goreng',
+                'harga' => 5000,
+                'deskripsi' => 'Tempe goreng hangat sebagai lauk tambahan.',
+                'is_favorite' => false,
+                'is_new' => false,
+            ],
+            [
+                'nama' => 'Es Teh',
+                'harga' => 4000,
+                'deskripsi' => 'Teh manis dingin yang segar untuk teman makan.',
+                'gambar' => 'menu/es-teh.svg',
+                'is_favorite' => false,
+                'is_new' => true,
+            ],
+            [
+                'nama' => 'Teh Hangat',
+                'harga' => 3000,
+                'deskripsi' => 'Teh manis hangat.',
+                'is_favorite' => false,
+                'is_new' => false,
             ],
         ];
 
         foreach ($menus as $menu) {
-            Menu::updateOrCreate(
-                ['nama' => $menu['nama']],
-                $menu
-            );
+            Menu::create($menu);
         }
     }
 }

@@ -21,9 +21,21 @@
         @error('gambar')<div class="invalid-feedback">{{ $message }}</div>@enderror
         @isset($menu)
             @if($menu->gambar)
-                <img src="{{ asset('storage/' . $menu->gambar) }}" class="rounded admin-thumb mt-3" alt="{{ $menu->nama }}">
+                <img src="{{ $menu->image_url }}" class="rounded admin-thumb mt-3" alt="{{ $menu->nama }}">
             @endif
         @endisset
+    </div>
+    <div class="col-md-6">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="1" id="is_favorite" name="is_favorite" @checked(old('is_favorite', $menu->is_favorite ?? false))>
+            <label class="form-check-label" for="is_favorite">Tandai sebagai menu favorit</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="1" id="is_new" name="is_new" @checked(old('is_new', $menu->is_new ?? false))>
+            <label class="form-check-label" for="is_new">Tandai sebagai menu terbaru</label>
+        </div>
     </div>
 </div>
 

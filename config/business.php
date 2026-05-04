@@ -9,6 +9,7 @@ return [
     'service_area' => 'Talunombo, Baturetno, dan sekitarnya',
     'maps_query' => 'PENYETAN MATTENAN Dungringin Talunombo Baturetno Wonogiri',
     'phone' => '0878-5332-3655',
+    'whatsapp_number' => '6287853323655',
     'hours_summary' => 'Selasa-Minggu 10.00-21.00, Senin tutup',
     'hours' => [
         'Senin' => 'Tutup',
@@ -24,6 +25,20 @@ return [
         'Bawa pulang',
         'Makan di tempat',
         'Menu nasi dan lauk sederhana',
+    ],
+    'order_steps' => [
+        [
+            'title' => 'Pilih menu',
+            'description' => 'Lihat menu favorit, menu terbaru, atau daftar menu lengkap.',
+        ],
+        [
+            'title' => 'Pesan via WhatsApp',
+            'description' => 'Klik tombol pesan, lalu kirim detail jumlah dan catatan pesanan.',
+        ],
+        [
+            'title' => 'Pilih layanan',
+            'description' => 'Pesan antar, bawa pulang, atau makan di tempat.',
+        ],
     ],
     'details' => [
         'Opsi layanan' => [

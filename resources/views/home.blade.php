@@ -32,4 +32,103 @@
             </div>
         </div>
     </section>
+
+    <section class="identity-band py-5">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+                <div>
+                    <p class="text-danger fw-semibold mb-1">Rekomendasi</p>
+                    <h2 class="fw-bold mb-0">Menu Favorit</h2>
+                </div>
+                <a href="{{ route('menus.public') }}" class="btn btn-outline-dark">Lihat Semua Menu</a>
+            </div>
+            <div class="row g-4">
+                @forelse($favoriteMenus as $menu)
+                    <div class="col-md-4">
+                        <article class="card border-0 shadow-sm h-100">
+                            @if($menu->image_url)
+                                <img src="{{ $menu->image_url }}" class="card-img-top menu-image" alt="{{ $menu->nama }}">
+                            @endif
+                            <div class="card-body">
+                                <span class="badge text-bg-warning mb-2">Favorit</span>
+                                <div class="d-flex justify-content-between gap-3">
+                                    <h3 class="h5 fw-bold">{{ $menu->nama }}</h3>
+                                    <span class="fw-bold text-danger">{{ $menu->price_label }}</span>
+                                </div>
+                                <p class="text-secondary">{{ $menu->deskripsi }}</p>
+                                <a class="btn btn-sm btn-mattenan" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                            </div>
+                        </article>
+                    </div>
+                @empty
+                    <div class="col-12">
+                        <div class="alert alert-warning mb-0">Menu favorit belum tersedia.</div>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+            <div>
+                <p class="text-danger fw-semibold mb-1">Baru Ditambahkan</p>
+                <h2 class="fw-bold mb-0">Menu Terbaru</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            @forelse($newMenus as $menu)
+                <div class="col-md-4">
+                    <article class="card border-0 shadow-sm h-100">
+                        @if($menu->image_url)
+                            <img src="{{ $menu->image_url }}" class="card-img-top menu-image" alt="{{ $menu->nama }}">
+                        @endif
+                        <div class="card-body">
+                            <span class="badge text-bg-success mb-2">Terbaru</span>
+                            <div class="d-flex justify-content-between gap-3">
+                                <h3 class="h5 fw-bold">{{ $menu->nama }}</h3>
+                                <span class="fw-bold text-danger">{{ $menu->price_label }}</span>
+                            </div>
+                            <p class="text-secondary">{{ $menu->deskripsi }}</p>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                        </div>
+                    </article>
+                </div>
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-warning mb-0">Menu terbaru belum tersedia.</div>
+                </div>
+            @endforelse
+        </div>
+    </section>
+
+    <section class="identity-band py-5">
+        <div class="container">
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-4">
+                    <p class="text-danger fw-semibold mb-1">Pemesanan</p>
+                    <h2 class="fw-bold">Pesan dengan Mudah</h2>
+                    <p class="text-secondary mb-0">Pilih menu, kirim pesanan lewat WhatsApp, lalu tentukan layanan yang paling nyaman.</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        @foreach($business['order_steps'] as $index => $step)
+                            <div class="col-md-4">
+                                <div class="bg-white border rounded p-3 h-100">
+                                    <div class="badge text-bg-danger mb-3">{{ $index + 1 }}</div>
+                                    <h3 class="h6 fw-bold">{{ $step['title'] }}</h3>
+                                    <p class="text-secondary mb-0">{{ $step['description'] }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <span class="badge text-bg-light border">Pesan antar</span>
+                        <span class="badge text-bg-light border">Bawa pulang</span>
+                        <span class="badge text-bg-light border">Makan di tempat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

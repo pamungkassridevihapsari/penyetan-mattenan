@@ -29,13 +29,23 @@
                             <tr>
                                 <td>
                                     @if($menu->gambar)
-                                        <img src="{{ asset('storage/' . $menu->gambar) }}" class="rounded admin-thumb" alt="{{ $menu->nama }}">
+                                        <img src="{{ $menu->image_url }}" class="rounded admin-thumb" alt="{{ $menu->nama }}">
                                     @else
                                         <div class="rounded admin-thumb d-flex align-items-center justify-content-center text-secondary small">Kosong</div>
                                     @endif
                                 </td>
-                                <td class="fw-semibold">{{ $menu->nama }}</td>
-                                <td>{{ $menu->harga > 0 ? 'Rp ' . number_format($menu->harga, 0, ',', '.') : 'Cek harga' }}</td>
+                                <td class="fw-semibold">
+                                    {{ $menu->nama }}
+                                    <div class="d-flex flex-wrap gap-1 mt-1">
+                                        @if($menu->is_favorite)
+                                            <span class="badge text-bg-warning">Favorit</span>
+                                        @endif
+                                        @if($menu->is_new)
+                                            <span class="badge text-bg-success">Terbaru</span>
+                                        @endif
+                                    </div>
+                                </td>
+                                <td>{{ $menu->price_label }}</td>
                                 <td class="text-secondary">{{ \Illuminate\Support\Str::limit($menu->deskripsi, 80) }}</td>
                                 <td>
                                     <div class="d-flex justify-content-end gap-2">
