@@ -45,18 +45,20 @@
             <div class="row g-4">
                 @forelse($favoriteMenus as $menu)
                     <div class="col-md-4">
-                        <article class="card border-0 shadow-sm h-100">
+                        <article class="card border-0 shadow-sm h-100 menu-card">
                             @if($menu->image_url)
                                 <img src="{{ $menu->image_url }}" class="card-img-top menu-image" alt="{{ $menu->nama }}">
                             @endif
                             <div class="card-body">
                                 <span class="badge text-bg-warning mb-2">Favorit</span>
-                                <div class="d-flex justify-content-between gap-3">
-                                    <h3 class="h5 fw-bold">{{ $menu->nama }}</h3>
-                                    <span class="fw-bold text-danger">{{ $menu->price_label }}</span>
+                                <div class="menu-title-row">
+                                    <h3 class="h5 fw-bold menu-title">{{ $menu->nama }}</h3>
+                                    <span class="menu-price">{{ $menu->price_label }}</span>
                                 </div>
                                 <p class="text-secondary">{{ $menu->deskripsi }}</p>
-                                <a class="btn btn-sm btn-mattenan" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                                <div class="menu-action">
+                                    <a class="btn btn-sm btn-mattenan" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -79,18 +81,20 @@
         <div class="row g-4">
             @forelse($newMenus as $menu)
                 <div class="col-md-4">
-                    <article class="card border-0 shadow-sm h-100">
+                    <article class="card border-0 shadow-sm h-100 menu-card">
                         @if($menu->image_url)
                             <img src="{{ $menu->image_url }}" class="card-img-top menu-image" alt="{{ $menu->nama }}">
                         @endif
                         <div class="card-body">
                             <span class="badge text-bg-success mb-2">Terbaru</span>
-                            <div class="d-flex justify-content-between gap-3">
-                                <h3 class="h5 fw-bold">{{ $menu->nama }}</h3>
-                                <span class="fw-bold text-danger">{{ $menu->price_label }}</span>
+                            <div class="menu-title-row">
+                                <h3 class="h5 fw-bold menu-title">{{ $menu->nama }}</h3>
+                                <span class="menu-price">{{ $menu->price_label }}</span>
                             </div>
                             <p class="text-secondary">{{ $menu->deskripsi }}</p>
-                            <a class="btn btn-sm btn-outline-dark" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                            <div class="menu-action">
+                                <a class="btn btn-sm btn-outline-dark" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                            </div>
                         </div>
                     </article>
                 </div>

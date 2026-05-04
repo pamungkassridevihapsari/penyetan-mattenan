@@ -50,7 +50,7 @@
                                 <td>
                                     <div class="d-flex justify-content-end gap-2">
                                         <a href="{{ route('admin.menus.edit', $menu) }}" class="btn btn-sm btn-outline-dark">Edit</a>
-                                        <form action="{{ route('admin.menus.destroy', $menu) }}" method="POST" onsubmit="return confirm('Hapus menu ini?')">
+                                        <form action="{{ route('admin.menus.destroy', $menu) }}" method="POST" data-confirm="Yakin ingin menghapus menu ini? Data menu yang dihapus tidak bisa dikembalikan." data-confirm-title="Hapus Menu" data-confirm-action="Hapus">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>

@@ -3,13 +3,15 @@
 return [
     'name' => 'Penyetan Mattenan',
     'tagline' => 'Rumah makan bernuansa kafe dan mini resto di Talunombo, Baturetno, Wonogiri.',
-    'category' => 'Rumah makan dan mini resto',
+    'category' => 'Rumah Makan Bernuansa Mini Resto',
     'short_description' => 'Penyetan Mattenan menyajikan menu sederhana yang akrab untuk makan harian, seperti nasi ayam goreng, nasi telur goreng, tahu goreng, tempe goreng, sambal, dan minuman.',
     'address' => 'Dungringin, Talunombo, Kec. Baturetno, Kabupaten Wonogiri, Jawa Tengah 57673',
     'service_area' => 'Talunombo, Baturetno, dan sekitarnya',
     'maps_query' => 'PENYETAN MATTENAN Dungringin Talunombo Baturetno Wonogiri',
     'phone' => '0878-5332-3655',
     'whatsapp_number' => '6287853323655',
+    'instagram_url' => 'https://www.instagram.com/penyetanmattenan',
+    'instagram_label' => '@penyetanmattenan',
     'hours_summary' => 'Selasa-Minggu 10.00-21.00, Senin tutup',
     'hours' => [
         'Senin' => 'Tutup',
