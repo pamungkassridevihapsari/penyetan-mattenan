@@ -31,7 +31,7 @@ class Menu extends Model
             return $this->gambar;
         }
 
-        return asset('storage/'.$this->gambar);
+        return route('menu.images.show', ['path' => $this->gambar]);
     }
 
     public function getPriceLabelAttribute(): string
