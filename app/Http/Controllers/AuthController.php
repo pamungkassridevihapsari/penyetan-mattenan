@@ -14,17 +14,17 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
 
-        $adminEmail = config('app.admin_email', 'admin@penyetanmattenan.test');
-        $adminPassword = config('app.admin_password', 'admin12345');
+        $adminUsername = config('app.admin_username', 'pamungkas');
+        $adminPassword = config('app.admin_password', 'devi');
 
-        if ($credentials['email'] !== $adminEmail || ! hash_equals($adminPassword, $credentials['password'])) {
+        if ($credentials['username'] !== $adminUsername || ! hash_equals($adminPassword, $credentials['password'])) {
             return back()
-                ->withErrors(['email' => 'Email atau password admin tidak sesuai.'])
-                ->onlyInput('email');
+                ->withErrors(['username' => 'Username atau password admin tidak sesuai.'])
+                ->onlyInput('username');
         }
 
         $request->session()->put('is_admin', true);

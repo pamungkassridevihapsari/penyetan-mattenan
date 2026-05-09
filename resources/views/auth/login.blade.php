@@ -20,9 +20,9 @@
                                 <form action="{{ route('login.attempt') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autofocus>
-                                        @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control form-control-lg @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" required autofocus>
+                                        @error('username')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="password" class="form-label">Password</label>
