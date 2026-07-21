@@ -18,7 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         User::updateOrCreate(
             ['email' => 'admin@penyetanmattenan.test'],
-            ['name' => 'Admin Penyetan Mattenan']
+            [
+                'name' => 'Admin Penyetan Mattenan',
+                'password' => 'mattenan123',
+            ]
         );
 
         $menus = [
