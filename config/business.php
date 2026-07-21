@@ -34,12 +34,12 @@ return [
             'description' => 'Lihat menu favorit, menu terbaru, atau daftar menu lengkap.',
         ],
         [
-            'title' => 'Pesan via WhatsApp',
-            'description' => 'Klik tombol pesan, lalu kirim detail jumlah dan catatan pesanan.',
+            'title' => 'Tambah ke keranjang',
+            'description' => 'Pilih jumlah dan catatan pesanan, lalu tambahkan ke keranjang.',
         ],
         [
-            'title' => 'Pilih layanan',
-            'description' => 'Pesan antar, bawa pulang, atau makan di tempat.',
+            'title' => 'Pesan via WhatsApp',
+            'description' => 'Pilih layanan, lalu pesanan akan dikirim ke WhatsApp penjual.',
         ],
     ],
     'details' => [

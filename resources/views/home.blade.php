@@ -57,7 +57,12 @@
                                 </div>
                                 <p class="text-secondary">{{ $menu->deskripsi }}</p>
                                 <div class="menu-action">
-                                    <a class="btn btn-sm btn-mattenan" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                                    <form action="{{ route('cart.add') }}" method="POST" class="d-flex align-items-center gap-2">
+                                        @csrf
+                                        <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="btn btn-sm btn-mattenan">Tambah ke Keranjang</button>
+                                    </form>
                                 </div>
                             </div>
                         </article>
@@ -92,9 +97,14 @@
                                 <span class="menu-price">{{ $menu->price_label }}</span>
                             </div>
                             <p class="text-secondary">{{ $menu->deskripsi }}</p>
-                            <div class="menu-action">
-                                <a class="btn btn-sm btn-outline-dark" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
-                            </div>
+                                <div class="menu-action">
+                                    <form action="{{ route('cart.add') }}" method="POST" class="d-flex align-items-center gap-2">
+                                        @csrf
+                                        <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="btn btn-sm btn-outline-dark">Tambah ke Keranjang</button>
+                                    </form>
+                                </div>
                         </div>
                     </article>
                 </div>
@@ -112,7 +122,7 @@
                 <div class="col-lg-4">
                     <p class="text-danger fw-semibold mb-1">Pemesanan</p>
                     <h2 class="fw-bold">Pesan dengan Mudah</h2>
-                    <p class="text-secondary mb-0">Pilih menu, kirim pesanan lewat WhatsApp, lalu tentukan layanan yang paling nyaman.</p>
+                    <p class="text-secondary mb-0">Pilih menu, tambahkan ke keranjang, lalu pilih layanan yang paling nyaman.</p>
                 </div>
                 <div class="col-lg-8">
                     <div class="row g-3">

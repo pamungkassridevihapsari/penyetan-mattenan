@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Models\Menu;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,13 @@ Route::get('/tentang', function () {
 })->name('about');
 
 Route::get('/menu', [MenuController::class, 'publicIndex'])->name('menus.public');
+
+Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
+Route::post('/keranjang/tambah', [CartController::class, 'add'])->name('cart.add');
+Route::post('/keranjang/update/{menuId}', [CartController::class, 'update'])->name('cart.update');
+Route::post('/keranjang/hapus/{menuId}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/keranjang/kosongkan', [CartController::class, 'clear'])->name('cart.clear');
+Route::post('/keranjang/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
 Route::get('/menu-images/{path}', function (string $path) {
     if (! Storage::disk('public')->exists($path)) {

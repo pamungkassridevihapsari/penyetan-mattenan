@@ -38,7 +38,12 @@
                                 </div>
                                 <p class="text-secondary mb-0">{{ $menu->deskripsi ?: 'Menu penyetan favorit dari Penyetan Mattenan.' }}</p>
                                 <div class="menu-action">
-                                    <a class="btn btn-sm btn-mattenan" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan Menu Ini</a>
+                                    <form action="{{ route('cart.add') }}" method="POST" class="d-flex align-items-center gap-2">
+                                        @csrf
+                                        <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                        <input type="number" name="quantity" value="1" min="1" max="99" class="form-control form-control-sm text-center" style="width: 60px;">
+                                        <button type="submit" class="btn btn-sm btn-mattenan">Tambah ke Keranjang</button>
+                                    </form>
                                 </div>
                             </div>
                         </article>
@@ -61,7 +66,12 @@
                                 </div>
                                 <div class="text-md-end">
                                     <div class="menu-price">{{ $menu->price_label }}</div>
-                                    <a class="btn btn-sm btn-outline-dark mt-2" href="{{ $menu->order_url }}" target="_blank" rel="noopener">Pesan</a>
+                                    <form action="{{ route('cart.add') }}" method="POST" class="d-inline-flex align-items-center gap-1 mt-2">
+                                        @csrf
+                                        <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                        <input type="number" name="quantity" value="1" min="1" max="99" class="form-control form-control-sm text-center" style="width: 55px;">
+                                        <button type="submit" class="btn btn-sm btn-mattenan">Tambah</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

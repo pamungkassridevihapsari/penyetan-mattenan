@@ -245,6 +245,7 @@
 <body>
     @php($business = config('business'))
     @php($currentRoute = request()->route()?->getName())
+    @php($cartCount = collect(session('cart', []))->sum('quantity'))
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand brand-mark" href="{{ route('home') }}">{{ $business['name'] }}</a>
@@ -256,6 +257,16 @@
                     <li class="nav-item"><a class="nav-link @if($currentRoute === 'home') active @endif" href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link @if($currentRoute === 'menus.public') active @endif" href="{{ route('menus.public') }}">Menu</a></li>
                     <li class="nav-item"><a class="nav-link @if($currentRoute === 'about') active @endif" href="{{ route('about') }}">Profil Usaha</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative @if($currentRoute === 'cart.index') active @endif" href="{{ route('cart.index') }}">
+                            &#128722;
+                            @if($cartCount > 0)
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background: var(--mattenan-red); font-size: 0.65rem;">
+                                    {{ $cartCount }}
+                                </span>
+                            @endif
+                        </a>
+                    </li>
                     @if(session('is_admin'))
                         <li class="nav-item"><a class="nav-link @if(str_starts_with($currentRoute ?? '', 'admin.')) active @endif" href="{{ route('admin.menus.index') }}">Admin</a></li>
                         <li class="nav-item">
