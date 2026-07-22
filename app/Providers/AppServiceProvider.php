@@ -21,5 +21,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+
+        if ($url = config('app.url')) {
+            request()->setTrustedHosts([parse_url($url, PHP_URL_HOST)]);
+        }
     }
 }
